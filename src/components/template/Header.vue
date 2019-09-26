@@ -3,7 +3,9 @@
         <a class="toggle" @click="toggleMenu">
             <i class="fa fa-lg" :class="icon"></i>
         </a>
-        <h1 class="title">{{ title }}</h1>
+        <h1 class="title">
+            <router-link to="/">{{ title }}</router-link>
+        </h1>
         <UserMenu v-if="!hideUserMenu" />
     </header>
 </template>
@@ -52,6 +54,12 @@ export default {
         color: #F5F5F5;
         text-decoration: none;
     }
+
+    .title a:hover {
+        color: #F5F5F5;
+        text-decoration: none;
+    }
+
     header.header > a.toggle {
         width: 60px;
         height: 100%;
