@@ -1,21 +1,21 @@
-# frontend
+# Segurança/Admin
 
-## Project setup
+## Na pasta do projeto execute
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Acione o servidor no modo de desenvolvimento
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compile os arquivos para o modo de produção
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### Erros nas linhas corrija com o comando abaixo
 ```
 npm run lint
 ```
