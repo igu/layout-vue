@@ -4,15 +4,19 @@
             <i class="fa fa-lg" :class="icon"></i>
         </a>
         <h1 class="title">{{ title }}</h1>
+        <UserMenu v-if="!hideUserMenu" />
     </header>
 </template>
 
 <script>
+import UserMenu from './UserMenu'
 export default {
     name: 'Header',
+    components: { UserMenu },
     props: {
         title: String,
-        hideToggle: Boolean
+        hideToggle: Boolean,
+        hideUserMenu: Boolean
     },
     computed: {
         icon() {
@@ -61,6 +65,7 @@ export default {
 
     header.header > a.toggle:hover {
         background-color: rgba(0, 0, 0, 0.2);
+        color: #F5F5F5;
         cursor: pointer;
     }
 </style>
