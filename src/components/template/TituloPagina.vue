@@ -9,7 +9,7 @@
 <script>
 export default {
     name: 'TituloPagina',
-    props: ['icon','primario','secundario']
+    props: ['icon', 'primario', 'secundario']
 }
 </script>
 

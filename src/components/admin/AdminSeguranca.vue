@@ -82,21 +82,7 @@ export default {
       mode: "save",
       iden: 5,
       user: {},
-      users: [],
-      fields: [
-        { key: "id", label: "Código", sortable: true },
-        { key: "nome", label: "Nome", sortable: true },
-        { key: "username", label: "Nome usuário", sortable: true },
-        { key: "senha", label: "Senha" },
-        { key: "admin", label: "Administrador", sortable: true },
-        { key: "ultima_jornada", label: "Ultima jornada", sortable: true },
-        { key: "actions", label: "Ações" }
-      ]
-    };
-  },
-  methods: {
-    carregarUsuarios() {
-      const usuarios = [
+      users: [
         {
           id: 1,
           nome: "Matheus Leão",
@@ -129,15 +115,25 @@ export default {
           admin: false,
           ultima_jornada: new Date(2019, 8, 26).getTime()
         }
-      ];
-      this.users = usuarios;
-    },
+      ],
+      fields: [
+        { key: "id", label: "Código", sortable: true },
+        { key: "nome", label: "Nome", sortable: true },
+        { key: "username", label: "Nome usuário", sortable: true },
+        { key: "senha", label: "Senha" },
+        { key: "admin", label: "Administrador", sortable: true },
+        { key: "ultima_jornada", label: "Ultima jornada", sortable: true },
+        { key: "actions", label: "Ações" }
+      ]
+    };
+  },
+  methods: {
     cancelar() {
-      (this.mode = "save"), (this.user = {});
-      this.carregarUsuarios();
+      this.mode = "save", 
+      this.user = {}
     },
     save() {
-      console.log(this.user.name);
+      console.log(this.user.name); /// ver se os dados estao vindo corretos
       if (this.user.nome === undefined) {
         this.$toasted.error("O nome não pode ser vazio", {
           theme: "outline",
@@ -187,36 +183,12 @@ export default {
       }
     },
     excluir() {
-      const id = this.user.id;
-      for (let userAtivo of this.users) { 
-        if(userAtivo.id === id) {
-          if (userAtivo.id > 4) {
-            this.users.splice(userAtivo, 1)
-            this.cancelar()
-            this.mounted()
-            this.$toasted.success("Excluido com sucesso!", {
-              theme: "outline",
-              position: "top-right",
-              duration: 2000
-            })
-          } else {
-            this.$toasted.error("Exclusao não autorizada!", {
-              theme: "outline",
-              position: "top-right",
-              duration: 2000
-            })
-          }
-          
-        }
-      }
+      // farei na fase dois do yii2
     },
     carregarUsuario(user, mode = 'save') { /* modo padrão pra mode */
       this.mode = mode;
       this.user = { ...user } // pega todas as info dos usuario sem precisar colocar os atributos
     }
-  },
-  mounted() {
-    this.carregarUsuarios();
   }
 };
 </script>

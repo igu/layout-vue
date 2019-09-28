@@ -1,12 +1,10 @@
 <template>
     <header class="header">
-        <a class="toggle" @click="toggleMenu">
-            <i class="fa fa-lg" :class="icon"></i>
-        </a>
-        <h1 class="title">
-            <router-link to="/">{{ title }}</router-link>
-        </h1>
-        <UserMenu v-if="!hideUserMenu" />
+        <router-link to="/" class="toggle">
+            <i class="fa fa-home"></i>
+        </router-link>
+        <h1 class="title">Aqui ficará os titulos das páginas atualmente acessadas</h1>
+        <UserMenu />
     </header>
 </template>
 
@@ -17,19 +15,7 @@ export default {
     components: { UserMenu },
     props: {
         title: String,
-        hideToggle: Boolean,
-        hideUserMenu: Boolean
     },
-    computed: {
-        icon() {
-            return this.$store.state.isMenuVisible ? "fa-angle-left" : "fa-angle-down"
-        }
-    },
-    methods: {
-        toggleMenu() {
-            this.$store.commit('toggleMenu')
-        }
-    }
 }
 </script>
 
@@ -48,16 +34,6 @@ export default {
         font-weight: 100;
         flex-grow: 1;
         text-align: center;
-    }
-
-    .title a {
-        color: #F5F5F5;
-        text-decoration: none;
-    }
-
-    .title a:hover {
-        color: #F5F5F5;
-        text-decoration: none;
     }
 
     header.header > a.toggle {
