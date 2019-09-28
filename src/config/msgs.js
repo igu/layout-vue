@@ -15,6 +15,6 @@ Vue.toasted.register(
 
 Vue.toasted.register(
     'defaultError',
-    data => !data.msg ? 'Algo deu errado' : data.msg,
+    data => !data.msg ? 'Algo deu errado' : data.msg, // !data.msg msg n foi setada no data
     { type: 'error', icon: 'times' }
 )
