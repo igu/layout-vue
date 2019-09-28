@@ -7,12 +7,13 @@
 
 <script>
 import TituloPagina from '../template/TituloPagina'
+
 export default {
     name: 'Home',
-    components: { TituloPagina } 
+    components: { TituloPagina },
 }
 </script>
 
 <style>
-
+  
 </style>
