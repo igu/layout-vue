@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Home from '@/components/home/Home'
 import AdminPaginas from '@/components/admin/AdminPaginas'
+import Login from '@/components/auth/Login'
 
 Vue.use(VueRouter)
 
@@ -14,6 +15,10 @@ const routes = [{
     name: 'paginasAdmin',
     path: '/admin',
     component: AdminPaginas
+}, {
+    name: 'login',
+    path: '/login',
+    component: Login
 }]
 
 const router = new VueRouter({
