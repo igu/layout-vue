@@ -55,20 +55,23 @@
         </b-col>
       </b-row>
       <b-form-checkbox id="admin-usuario" v-model="user.admin" class="mt-2 mb-3">Admin</b-form-checkbox>
+      <b-form-checkbox class="mt-2 mb-3">Escala 24/72</b-form-checkbox>
+      <b-form-checkbox class="mt-2 mb-3">Escala 12/36</b-form-checkbox>
       <b-button variant="primary" v-if="mode === 'save'" @click="save">Adicionar</b-button>
-      <b-button variant="primary" v-if="mode === 'edit'" @click="save">Atualizar</b-button>
+      <b-button variant="primary" v-if="mode === 'edit'" @click="att">Atualizar</b-button>
       <b-button variant="danger" v-if="mode === 'remove'" @click="excluir">Excluir</b-button>
       <b-button class="ml-2" @click="cancelar">Cancelar</b-button>
     </b-form>
     <hr />
     <b-table hover striped :items="users" :fields="fields">
-      <template slot="actions" slot-scope="data"> <!-- template interno para ações das fields --> 
+      <template slot="actions" slot-scope="data">
+        <!-- template interno para ações das fields -->
         <b-button variant="warning" @click="carregarUsuario(data.item, 'edit')" class="mr-2">
           <i class="fa fa-pencil"></i>
         </b-button>
         <b-button variant="danger" @click="carregarUsuario(data.item, 'remove')">
           <i class="fa fa-trash"></i>
-        </b-button> 
+        </b-button>
       </template>
     </b-table>
   </div>
@@ -129,8 +132,24 @@ export default {
   },
   methods: {
     cancelar() {
-      this.mode = "save", 
-      this.user = {}
+      (this.mode = "save"), (this.user = {});
+    },
+    att() {
+      const novoUsuario = {
+          id: this.iden++,
+          nome: this.user.nome,
+          username: this.user.username,
+          senha: this.user.senha,
+          admin: this.user.admin ? "true" : "false",
+          ultima_jornada: new Date().getTime()
+        };
+      this.users.splice(this.user, 1, novoUsuario)
+      this.cancelar()
+      this.$toasted.success("Atualizado com sucesso!", {
+          theme: "outline",
+          position: "top-right",
+          duration: 2000
+        });
     },
     save() {
       console.log(this.user.name); /// ver se os dados estao vindo corretos
@@ -173,21 +192,28 @@ export default {
           admin: this.user.admin ? "true" : "false",
           ultima_jornada: new Date().getTime()
         };
-        this.users.push(novoUsuario)
-        this.user = {}
+        this.users.push(novoUsuario);
+        this.user = {};
         this.$toasted.success("Cadastrado com sucesso!", {
           theme: "outline",
           position: "top-right",
           duration: 2000
-        })
+        });
       }
     },
     excluir() {
-      // farei na fase dois do yii2
+      this.users.splice(this.user, 1);
+      this.cancelar();
+      this.$toasted.success("Excluido com sucesso!", {
+        theme: "outline",
+        position: "top-right",
+        duration: 2000
+      });
     },
-    carregarUsuario(user, mode = 'save') { /* modo padrão pra mode */
+    carregarUsuario(user, mode = "save") {
+      /* modo padrão pra mode */
       this.mode = mode;
-      this.user = { ...user } // pega todas as info dos usuario sem precisar colocar os atributos
+      this.user = { ...user }; // pega todas as info dos usuario sem precisar colocar os atributos
     }
   }
 };

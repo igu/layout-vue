@@ -29,7 +29,7 @@
         </b-col>
       </b-row>
       <b-button variant="primary" v-if="mode === 'save'" @click="save">Adicionar</b-button>
-      <b-button variant="primary" v-if="mode === 'edit'" @click="save">Atualizar</b-button>
+      <b-button variant="primary" v-if="mode === 'edit'" @click="att">Atualizar</b-button>
       <b-button variant="danger" v-if="mode === 'remove'" @click="excluir">Excluir</b-button>
       <b-button class="ml-2" @click="cancelar">Cancelar</b-button>
     </b-form>
@@ -84,7 +84,21 @@ export default {
   methods: {
     cancelar() {
       this.mode = "save", 
-      this.eqp = {}
+      this.eqp = {};
+    },
+    att() {
+     const novoEqp = {
+          id: this.eqp.id,
+          nome: this.eqp.nome,
+          qtd: this.eqp.qtd
+      };
+      this.eqps.splice(this.eqp, 1, novoEqp)
+      this.cancelar()
+      this.$toasted.success("Atualizado com sucesso!", {
+          theme: "outline",
+          position: "top-right",
+          duration: 2000
+        });
     },
     save() {
       console.log(this.eqp.nome); /// ver se os dados estao vindo corretos
@@ -105,22 +119,29 @@ export default {
           id: this.iden++,
           nome: this.eqp.nome,
           qtd: this.eqp.qtd
-        }
-        this.eqps.push(novoEqp)
+        };
+        this.eqps.push(novoEqp);
         this.$toasted.success("Cadastrado com sucesso!", {
           theme: "outline",
           position: "top-right",
           duration: 2000
-        })
-        this.eqp = {}
+        });
+        this.eqp = {};
       }
     },
     excluir() {
-      // farei na fase dois do yii2
+      this.eqps.splice(this.eqp, 1);
+      this.cancelar();
+      this.$toasted.success("Excluido com sucesso!", {
+        theme: "outline",
+        position: "top-right",
+        duration: 2000
+      });
     },
-    carregarEqp(eqp, mode = 'save') { /* modo padrão pra mode */
+    carregarEqp(eqp, mode = "save") {
+      /* modo padrão pra mode */
       this.mode = mode;
-      this.eqp = { ...eqp } // pega todas as info do equipamento sem precisar colocar os atributos
+      this.eqp = { ...eqp }; // pega todas as info do equipamento sem precisar colocar os atributos
     }
   }
 };

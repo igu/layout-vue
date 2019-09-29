@@ -25,19 +25,19 @@ export default {
           id: 1,
           nome_completo: "Matheus Leão",
           ultima_jornada: (new Date(2019, 8, 25, 13, 55, 22) + '').substring(0, 24),
-          proxima_jornada: (new Date(2019, 8, 28, 13, 55, 22) + '').substring(0, 24)
+          proxima_jornada: (new Date(2019, 8, 29, 13, 55, 22) + '').substring(0, 24)
         },
         {
           id: 2,
           nome_completo: "Thiago Leão",
           ultima_jornada: (new Date(2019, 8, 26, 22, 13, 35) + '').substring(0, 24),
-          proxima_jornada: (new Date(2019, 8, 29, 22, 18, 13) + '').substring(0, 24)
+          proxima_jornada: (new Date(2019, 8, 30, 22, 18, 13) + '').substring(0, 24)
         },
         {
           id: 3,
           nome_completo: "Moises Leão",
           ultima_jornada: (new Date(2019, 8, 27, 21, 52, 18) + '').substring(0, 24),
-          proxima_jornada: (new Date(2019, 8, 30, 21, 55, 32) + '').substring(0, 24)
+          proxima_jornada: (new Date(2019, 9, 1, 21, 55, 32) + '').substring(0, 24)
         }
       ],
       fields: [
