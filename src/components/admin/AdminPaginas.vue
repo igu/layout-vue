@@ -14,6 +14,9 @@
           <b-tab title="Seguranças">
             <AdminSeguranca />
           </b-tab>
+          <b-tab title="Escalas">
+            <AdminEscalas />
+          </b-tab>
         </b-tabs>
       </b-card>
     </div>
@@ -24,10 +27,11 @@
 import TituloPagina from "../template/TituloPagina"
 import AdminEquipamento from './AdminEquipamento'
 import AdminSeguranca from './AdminSeguranca'
+import AdminEscalas from './AdminEscalas'
 
 export default {
   name: "AdminPaginas",
-  components: { TituloPagina, AdminEquipamento, AdminSeguranca }
+  components: { TituloPagina, AdminEquipamento, AdminSeguranca, AdminEscalas }
 };
 </script>
 

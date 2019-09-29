@@ -2,9 +2,10 @@
   <div class="login-content">
     <div class="login-modal">
       <h5>Digite suas credenciais</h5>
-      <input type="text" v-model="user.username" placeholder="username" />
-      <input type="password" v-model="user.senha" placeholder="senha" />
-      <button @click="entrar">Logar</button>
+      <hr />
+      <input type="text" v-model="user.username" placeholder="Digite seu username" />
+      <input type="password" v-model="user.senha" placeholder="Digite sua senha" />
+      <button @click="entrar">Entrar</button>
     </div>
   </div>
 </template>
@@ -61,12 +62,21 @@ export default {
 }
 
 .login-modal button {
-  background-color: rgb(9, 65, 9);
+  background-color: #163374;
   padding: 5px 15px;
   color: #f5f5f5;
   font-weight: bold;
   border: none;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  width: 100%;
+}
+
+.login-modal hr {
+  border: 0;
+  width: 50%;
+  height: 1px;
+  background: #CCC;
+  margin-top: 0;
 }
 </style>

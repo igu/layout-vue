@@ -1,13 +1,16 @@
 <template>
-  <div id="app">
-    <Header />
+
+  <div v-if="!$route.meta.desativaHeader" id="app">
+    <Header  />
     <Content />
-    <Footer />
+    <Footer  />
+  </div>
+  <div v-else id="app-login">
+    <Content />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex";
 import Header from "@/components/template/Header";
 import Content from "@/components/template/Content";
 import Footer from "@/components/template/Footer";
@@ -38,5 +41,15 @@ body {
     "header header"
     "content content"
     "footer footer";
+}
+
+#app-login {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
 }
 </style>

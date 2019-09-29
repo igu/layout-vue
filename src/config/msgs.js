@@ -7,6 +7,13 @@ Vue.use(Toasted, {
 })
 
 
+/* ================================
+    
+|   ATT QND TIVER UTILIZANDO YII2 
+|  Resolvi deixar a estrutura criada
+    
+=========================================
+*/ 
 Vue.toasted.register(
     'defaultSucess',
     'Operação realizada com sucesso',

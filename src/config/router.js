@@ -15,10 +15,12 @@ const routes = [{
     name: 'paginasAdmin',
     path: '/admin',
     component: AdminPaginas
-}, {
+}, 
+{
     name: 'login',
     path: '/login',
-    component: Login
+    component: Login,
+    meta: { desativaHeader: true }
 }]
 
 const router = new VueRouter({
